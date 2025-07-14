@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=4 uid="uid://b63hmvhwnb6jr"]
+
+[ext_resource type="TileSet" uid="uid://oydd313s5fas" path="res://resources/images/scenery/platforms/platforms.tres" id="1_xegbs"]
+[ext_resource type="PackedScene" uid="uid://cd4livqmxtyte" path="res://characters/cat/cat.tscn" id="2_uegfd"]
+
+[node name="prueba" type="Node2D"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAADAAIAAAAAAAAAAAAEAAIAAAAAAAAAAAAFAAIAAAAAAAAAAAACAAIAAAAAAAAAAAACAAMAAAAAAAAAAAAFAAMAAAAAAAAAAAA=")
+tile_set = ExtResource("1_xegbs")
+
+[node name="Cat" parent="." instance=ExtResource("2_uegfd")]
+position = Vector2(512, 256)
+max_speed = 200
+aceleration = 600
+friction = 2000

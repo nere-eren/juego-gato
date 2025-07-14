@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://cd4livqmxtyte"]
+
+[ext_resource type="Texture2D" uid="uid://dn4d3ji7pen05" path="res://icon.svg" id="1_uki7w"]
+[ext_resource type="Script" uid="uid://be0ecsqjnakei" path="res://characters/cat/cat.gd" id="1_yt5bw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uki7w"]
+size = Vector2(66, 52)
+
+[node name="Cat" type="CharacterBody2D"]
+script = ExtResource("1_yt5bw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -27)
+scale = Vector2(0.5625, 0.4375)
+texture = ExtResource("1_uki7w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -27)
+shape = SubResource("RectangleShape2D_uki7w")
+
+[node name="Rays" type="Node2D" parent="."]
+position = Vector2(0, -27)
+
+[node name="RayCast2DMiddle" type="RayCast2D" parent="Rays"]
+target_position = Vector2(0, 35)
+
+[node name="RayCast2DLeftDown" type="RayCast2D" parent="Rays"]
+position = Vector2(-33, 0)
+target_position = Vector2(0, 35)
+
+[node name="RayCast2DRightDown" type="RayCast2D" parent="Rays"]
+position = Vector2(33, 0)
+target_position = Vector2(0, 35)
+
+[node name="RayCast2DLeft" type="RayCast2D" parent="Rays"]
+target_position = Vector2(-37, 0)
+
+[node name="RayCast2DRight" type="RayCast2D" parent="Rays"]
+target_position = Vector2(37, 0)
