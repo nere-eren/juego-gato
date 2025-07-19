@@ -10,7 +10,9 @@ func _physics_process(delta):
 	var dir_x = Input.get_axis("left","right")
 	var dir_y = Input.get_axis("up","down")
 	
-	degrees_move(treat_vector(dir_x, dir_y), delta)
+	var dir: Vector2 = Input.get_vector("left","right","up", "down")
+	
+	degrees_move(input_handle(dir), delta)
 	
 	#if (rotation_degrees == 0):
 		#if($Rays/RayCast2DMiddle.is_colliding()):
@@ -33,13 +35,39 @@ func _physics_process(delta):
 				#velocity.x = move_toward(dir_x * velocity.x,0, aceleration * delta)
 	move_and_slide()
 	
-func treat_vector(dir_x, dir_y):
-	var vector: Vector2
-	if (sin(rotation_degrees) == 0 ):
-		vector = Vector2(dir_x, 0)
-	if(cos(rotation_degrees)==0):
-		vector = Vector2(0, dir_y)
-	return vector
+#func _input(event):
+	#if event.is_action_pressed("ui_accept"):
+		#rotate(1.5708)
+		
+#func treat_vector(dir_x, dir_y):
+	#var vector: Vector2
+	#if (sin(rotation_degrees) == 0 ):
+		#vector = Vector2(dir_x, 0)
+	#if(cos(rotation_degrees)==0):
+		#vector = Vector2(0, dir_y)
+	#return vector
+	
+func rotate_cat():
+	rotate(1.5708)
+	
+func input_handle(dir: Vector2) -> Vector2:
+	if (sin(rotation_degrees) == 0):
+		if ($Rays/RayCast2DLeft.is_colliding() || $Rays/RayCast2DRight.is_colliding() 
+		|| !$Rays/RayCast2DLeftDown.is_colliding() || !$Rays/RayCast2DRightDown.is_colliding()):
+			if (dir.y != 0):
+				rotate_cat()
+			return dir
+		else:
+			return dir * Vector2(1,0)
+	else:
+		if ($Rays/RayCast2DLeft.is_colliding() || $Rays/RayCast2DRight.is_colliding() 
+		|| !$Rays/RayCast2DLeftDown.is_colliding() || !$Rays/RayCast2DRightDown.is_colliding()):
+			if (dir.x != 0):
+				rotate_cat()
+			return dir
+		else:
+			return dir * Vector2(0,1)
+	
 	
 func move(direction: Vector2, condition, delta):
 	if(condition):
@@ -50,7 +78,7 @@ func move(direction: Vector2, condition, delta):
 
 func raycast_move(direction: Vector2, dir_if_only_left_ray: Vector2, dir_if_only_right_ray: Vector2, delta):
 	if($Rays/RayCast2DMiddle.is_colliding()):
-			move(direction,(direction != Vector2.ZERO), delta)
+		move(direction,(direction != Vector2.ZERO), delta)
 	elif($Rays/RayCast2DLeftDown.is_colliding()):
 			move(direction,(direction == dir_if_only_left_ray), delta)
 	elif($Rays/RayCast2DRightDown.is_colliding()):

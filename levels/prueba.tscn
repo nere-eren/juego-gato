@@ -10,7 +10,7 @@ tile_map_data = PackedByteArray("AAADAAIAAAAAAAAAAAAEAAIAAAAAAAAAAAAFAAIAAAAAAAA
 tile_set = ExtResource("1_xegbs")
 
 [node name="Cat" parent="." instance=ExtResource("2_uegfd")]
-position = Vector2(512, 256)
+position = Vector2(510, 253)
 max_speed = 200
 aceleration = 600
 friction = 2000
