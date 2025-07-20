@@ -1,6 +1,6 @@
-extends Node
+class_name DirectionHandler extends Node
 
-var cat = "res://characters/cat/cat.tscn"
+var cat = $"."
 
 func degrees_move(direction: Vector2, delta):
 	if(sin(cat.rotation_degrees)==0 && cos(cat.rotation_degrees)==1):

@@ -47,6 +47,12 @@ func _physics_process(delta):
 		#vector = Vector2(0, dir_y)
 	#return vector
 	
+func inside_rotate(degrees):
+	rotate(degrees)
+	
+func outside_rotate(degrees):
+	rotate(degrees)
+	
 func rotate_cat():
 	rotate(1.5708)
 	
