@@ -1,14 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://cd4livqmxtyte"]
+[gd_scene load_steps=6 format=3 uid="uid://cd4livqmxtyte"]
 
 [ext_resource type="Texture2D" uid="uid://dn4d3ji7pen05" path="res://icon.svg" id="1_uki7w"]
-[ext_resource type="Script" uid="uid://be0ecsqjnakei" path="res://characters/cat/cat.gd" id="1_yt5bw"]
+[ext_resource type="Script" uid="uid://ceoth1hifhefu" path="res://characters/cat/cat.gd" id="1_xfgbo"]
+[ext_resource type="Script" uid="uid://cehxd38thnx5y" path="res://characters/cat/movement/raysController.gd" id="3_c6vmg"]
 [ext_resource type="Script" uid="uid://d17efsbv3knyx" path="res://characters/cat/movement/input_handler.gd" id="3_xfgbo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uki7w"]
 size = Vector2(66, 52)
 
 [node name="Cat" type="CharacterBody2D"]
-script = ExtResource("1_yt5bw")
+script = ExtResource("1_xfgbo")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -27)
@@ -21,23 +22,19 @@ shape = SubResource("RectangleShape2D_uki7w")
 
 [node name="Rays" type="Node2D" parent="."]
 position = Vector2(0, -27)
+script = ExtResource("3_c6vmg")
 
-[node name="RayCast2DMiddle" type="RayCast2D" parent="Rays"]
-target_position = Vector2(0, 35)
-
-[node name="RayCast2DLeftDown" type="RayCast2D" parent="Rays"]
-position = Vector2(-33, 0)
-target_position = Vector2(0, 35)
-
-[node name="RayCast2DRightDown" type="RayCast2D" parent="Rays"]
-position = Vector2(33, 0)
-target_position = Vector2(0, 35)
+[node name="RayCast2DDown" type="RayCast2D" parent="Rays"]
+target_position = Vector2(0, 29)
 
 [node name="RayCast2DLeft" type="RayCast2D" parent="Rays"]
 target_position = Vector2(-37, 0)
 
 [node name="RayCast2DRight" type="RayCast2D" parent="Rays"]
 target_position = Vector2(37, 0)
+
+[node name="RayCast2DUp" type="RayCast2D" parent="Rays"]
+target_position = Vector2(0, -29)
 
 [node name="InputHandler" type="Node" parent="."]
 script = ExtResource("3_xfgbo")

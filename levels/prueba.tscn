@@ -6,11 +6,11 @@
 [node name="prueba" type="Node2D"]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAADAAIAAAAAAAAAAAAEAAIAAAAAAAAAAAAFAAIAAAAAAAAAAAACAAIAAAAAAAAAAAACAAMAAAAAAAAAAAAFAAMAAAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAADAAIAAAAAAAAAAAAEAAIAAAAAAAAAAAAFAAIAAAAAAAAAAAACAAIAAAAAAAAAAAACAAMAAAAAAAAAAAAFAAMAAAAAAAAAAAABAAIAAAAAAAAAAAABAAEAAAAAAAAAAAACAAAAAAAAAAAAAAABAAAAAAAAAAAAAAA=")
 tile_set = ExtResource("1_xegbs")
 
 [node name="Cat" parent="." instance=ExtResource("2_uegfd")]
-position = Vector2(510, 253)
+position = Vector2(467, 259)
 max_speed = 200
 aceleration = 600
 friction = 2000
